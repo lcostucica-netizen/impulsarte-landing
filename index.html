@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impulsarte AI - Arte, tecnología y comunidad</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="logo">🎨✨</div>
+            <h1>Impulsarte <span class="gradient">AI</span></h1>
+            <p class="tagline">Donde la creatividad se encuentra con la Inteligencia Artificial</p>
+            <p class="description">Descubre un catálogo de obras de arte creadas por artistas impulsados por la IA. Explora, conecta y lleva el futuro del arte a tu espacio.</p>
+            
+            <div class="cta-buttons">
+                <a href="#catalog" class="btn-primary">Explorar Obras</a>
+                <button class="btn-secondary" onclick="openModal('artists')">Soy Artista</button>
+            </div>
+            <p class="hero-note">Arte innovador, curado por expertos.</p>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <h2>Cómo Funciona el Proceso</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Creación AI-Driven</h3>
+                <p>Nuestros artistas usan herramientas de IA para refinar conceptos y crear borradores únicos.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Curación Humana</h3>
+                <p>Un equipo de curadores selecciona las obras con mayor impacto y valor artístico.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Exposición Digital</h3>
+                <p>Las obras seleccionadas se exponen en nuestro catálogo exclusivo para su adquisición.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Adquisición y Envío</h3>
+                <p>Contacta directamente al artista para la compra y coordina la entrega de tu obra.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalog" class="catalog">
+        <h2>Catálogo de Obras Únicas</h2>
+        <p class="catalog-subtitle">Encuentra la pieza perfecta para tu hogar, oficina o colección.</p>
+
+        <div class="catalog-filters">
+            <input type="text" id="searchInput" class="search-box" placeholder="Buscar por título...">
+            <select id="techniqueFilter" class="filter-select">
+                <option value="">Todas las Técnicas</option>
+                <option value="Óleo">Óleo</option>
+                <option value="Acrílico">Acrílico</option>
+                <option value="Relieve">Relieve</option>
+            </select>
+        </div>
+        
+        <div id="artworksGrid" class="artworks-grid">
+            </div>
+    </section>
+
+    <section id="for-artists" class="for-artists">
+        <h2>Impulsa tu Arte con IA</h2>
+        <p class="artists-subtitle">Únete a nuestra comunidad y explora nuevas fronteras creativas. Te ayudamos a integrar herramientas de IA en tu proceso.</p>
+        
+        <div class="artists-content">
+            <div class="artist-box">
+                <div class="artist-icon"><i class="fas fa-robot"></i></div>
+                <h3>Masterclass de IA Creativa</h3>
+                <p>Aprende a usar Midjourney, Stable Diffusion y otras herramientas de IA para generar bocetos.</p>
+                <p class="artist-subtext">Disponible en los planes Pro y Ultra.</p>
+            </div>
+            <div class="artist-box">
+                <div class="artist-icon"><i class="fas fa-handshake"></i></div>
+                <h3>Exposición Curada</h3>
+                <p>Gana visibilidad en nuestro catálogo exclusivo, llegando a coleccionistas interesados en el arte futurista.</p>
+                <p class="artist-subtext">Solo artistas seleccionados.</p>
+            </div>
+            <div class="artist-box">
+                <div class="artist-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Planes de Crecimiento</h3>
+                <p>Accede a herramientas de marketing digital y branding para artistas que quieren escalar su negocio.</p>
+                <p class="artist-subtext">Beneficios exclusivos para miembros.</p>
+            </div>
+        </div>
+        
+        <a href="#plans" class="btn-primary" style="margin-top: 2rem;">Ver Planes para Artistas</a>
+    </section>
+
+    <section id="plans" class="plans">
+        <h2>Nuestros Planes para Artistas</h2>
+
+        <div class="plans-section">
+            <div class="plans-grid">
+                
+                <div class="plan-card">
+                    <h4>Plan Free</h4>
+                    <div class="price">$0<span>/mes</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Acceso a la comunidad</li>
+                        <li><i class="fas fa-check"></i> Un (1) espacio de catálogo</li>
+                        <li><i class="fas fa-check"></i> Soporte comunitario</li>
+                        <li><i class="fas fa-times" style="color: #ff6f00;"></i> Masterclass de IA</li>
+                        <li><i class="fas fa-times" style="color: #ff6f00;"></i> Promoción premium</li>
+                    </ul>
+                    <button class="btn-plan" onclick="contactPlan('Free')">Comenzar Gratis</button>
+                </div>
+
+                <div class="plan-card popular">
+                    <div class="badge">Más Popular</div>
+                    <h4>Plan Pro</h4>
+                    <div class="price">$29<span>/mes</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Acceso a la comunidad</li>
+                        <li><i class="fas fa-check"></i> Cinco (5) espacios de catálogo</li>
+                        <li><i class="fas fa-check"></i> Soporte técnico prioritario</li>
+                        <li><i class="fas fa-check"></i> **Masterclass de IA Creativa**</li>
+                        <li><i class="fas fa-times" style="color: #ff6f00;"></i> Promoción premium</li>
+                    </ul>
+                    <button class="btn-plan" onclick="contactPlan('Pro')">Elegir Plan Pro</button>
+                </div>
+
+                <div class="plan-card">
+                    <h4>Plan Ultra</h4>
+                    <div class="price">$59<span>/mes</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Acceso a la comunidad</li>
+                        <li><i class="fas fa-check"></i> Ilimitado espacio de catálogo</li>
+                        <li><i class="fas fa-check"></i> Soporte técnico 24/7</li>
+                        <li><i class="fas fa-check"></i> **Masterclass de IA Creativa**</li>
+                        <li><i class="fas fa-check"></i> **Promoción premium en redes**</li>
+                    </ul>
+                    <button class="btn-plan" onclick="contactPlan('Ultra')">Elegir Plan Ultra</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contacto Rápido</h2>
+        <a href="https://wa.me/5491167313343?text=Hola! Me gustaría saber más sobre Impulsarte AI." target="_blank" class="whatsapp-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png" alt="WhatsApp Icon">
+            Chatear por WhatsApp
+        </a>
+        <div class="contact-info">
+            <p>¿Tenés alguna duda sobre una obra o nuestros planes?</p>
+            <p>Escribinos a <a href="mailto:info@impulsarte.ai">info@impulsarte.ai</a></p>
+        </div>
+    </section>
+
+
+    <div id="modalArtists" class="modal">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal('artists')">&times;</button>
+            <h2>¡Únete a la Revolución Artística!</h2>
+            <p>Si eres un artista y quieres llevar tu creatividad al siguiente nivel con el apoyo de la inteligencia artificial, este es tu lugar.</p>
+            <a href="#plans" class="btn-whatsapp" onclick="closeModal('artists')">Ver Planes para Artistas</a>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.7);">O escríbenos a nuestro WhatsApp para una consulta personalizada.</p>
+        </div>
+    </div>
+
+    <div id="modalArtwork" class="modal">
+        <div class="modal-content modal-large">
+            <button class="close" onclick="closeModal('artwork')">&times;</button>
+            <div id="artworkDetail">
+                </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
