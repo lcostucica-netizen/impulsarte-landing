@@ -117,43 +117,85 @@
         </button>
     </section>
 
-    <!-- Planes -->
-    <section class="plans" id="planes">
-        <h2>Planes</h2>
+    <section class="pricing" id="planes">
+    <div class="section-header">
+        <h2>Planes para tu espacio</h2>
+        <p>Elegí el plan que mejor se adapta a tu oficina, consultorio o cowork. Todos incluyen instalación y curaduría.</p>
+    </div>
 
-        <div class="plans-section" id="planes-empresas">
-            <h3>Para Empresas</h3>
-            <div class="plans-grid">
-                <div class="plan-card">
-                    <h4>Esencial</h4>
-                    <p class="price">$80K<span>/mes + IVA</span></p>
-                    <ul>
-                        <li>✓ Selección inicial de obras</li>
-                        <li>✓ Hasta 3 cuadros</li>
-                        <li>✓ Sin rotaciones</li>
-                    </ul>
-                    <button class="btn-plan" onclick="contactPlan('Esencial')">Elegir</button>
-                </div>
-                <div class="plan-card popular">
-                    <div class="badge">Popular</div>
-                    <h4>Profesional</h4>
-                    <p class="price">$120K<span>/mes + IVA</span></p>
-                    <ul>
-                        <li>✓ Selección y curaduría inicial</li>
-                        <li>✓ Hasta 6 cuadros</li>
-                        <li>✓ 1 rotación al año</li>
-                    </ul>
-                    <button class="btn-plan" onclick="contactPlan('Profesional')">Elegir</button>
-                </div>
-                <div class="plan-card">
-                    <h4>Premium</h4>
-                    <p class="price">$180K<span>/mes + IVA</span></p>
-                    <ul>
-                        <li>✓ Curaduría completa</li>
-                        <li>✓ Hasta 10 cuadros</li>
-                        <li>✓ 3 rotaciones anuales</li>
-                    </ul>
-                    <button class="btn-plan" onclick="contactPlan('Premium')">Elegir</button>
+    <div class="pricing-grid">
+        <!-- Plan Esencial -->
+        <article class="pricing-card">
+            <h3 class="plan-name">Plan Esencial</h3>
+            <p class="plan-tagline">Decorá tu espacio sin esfuerzo.</p>
+
+            <p class="price">
+                <span class="price-amount">$19.900</span>
+                <span class="price-period">/ mes</span>
+            </p>
+
+            <ul class="plan-features">
+                <li>3 obras seleccionadas con IA y curaduría</li>
+                <li>1 rotación anual (renovación sin cargo)</li>
+                <li>Instalación profesional</li>
+                <li>Informe estético del espacio</li>
+                <li>Garantía de conservación</li>
+            </ul>
+
+            <button class="btn-primary" onclick="openModal('contact')">
+                Quiero este plan
+            </button>
+        </article>
+
+        <!-- Plan Profesional -->
+        <article class="pricing-card featured">
+            <div class="badge">Más elegido</div>
+            <h3 class="plan-name">Plan Profesional</h3>
+            <p class="plan-tagline">Renovación garantizada todo el año.</p>
+
+            <p class="price">
+                <span class="price-amount">$29.900</span>
+                <span class="price-period">/ mes</span>
+            </p>
+
+            <ul class="plan-features">
+                <li>5 obras seleccionadas a medida con IA</li>
+                <li>2 rotaciones anuales</li>
+                <li>Instalación y desinstalación profesional</li>
+                <li>Informe estético + propuesta de mejora</li>
+                <li>Gestión logística completa</li>
+            </ul>
+
+            <button class="btn-primary" onclick="openModal('contact')">
+                Quiero este plan
+            </button>
+        </article>
+
+        <!-- Plan Premium -->
+        <article class="pricing-card">
+            <h3 class="plan-name">Plan Premium</h3>
+            <p class="plan-tagline">Tu oficina como nunca la viste.</p>
+
+            <p class="price">
+                <span class="price-amount">$39.900</span>
+                <span class="price-period">/ mes</span>
+            </p>
+
+            <ul class="plan-features">
+                <li>7 obras seleccionadas y curadas según tu identidad visual</li>
+                <li>3 rotaciones anuales (cambio cada 4 meses)</li>
+                <li>Informe estético + propuesta de identidad visual</li>
+                <li>Instalación completa + mantenimiento</li>
+                <li>Servicio integral llave en mano</li>
+            </ul>
+
+            <button class="btn-primary" onclick="openModal('contact')">
+                Quiero este plan
+            </button>
+        </article>
+    </div>
+</section>
+
                 </div>
             </div>
         </div>
@@ -531,5 +573,6 @@
       <script src="script.js" defer></script>
 </body>
 </html>
+
 
 
