@@ -423,14 +423,18 @@ h1 {
 }
 
 .plan-card {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  padding: 2.2rem 2rem 2.4rem;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(12px);
-  position: relative;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  text-align: left;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 2.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    display: flex;               /* IMPORTANTE */
+    flex-direction: column;      /* Acomodamos verticalmente */
+    justify-content: space-between;
+    height: 100%;                /* Las iguala automáticamente */
+}
+.plan-card ul {
+    flex-grow: 1;  /* Esto empuja el botón hacia abajo */
 }
 
 .plan-card:hover {
@@ -714,3 +718,4 @@ h1 {
     padding-inline: 0.5rem;
   }
 }
+
