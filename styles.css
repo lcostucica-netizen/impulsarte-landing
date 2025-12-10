@@ -818,6 +818,32 @@ h1 {
   border-radius: 10px;
   backdrop-filter: blur(6px);
 }
+/* Alinear tarjetas del guardado */
+.storage-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* distribuye arriba/abajo */
+  height: 100%; /* todas misma altura */
+  padding-bottom: 2.5rem;
+}
+
+.storage-card h4,
+.storage-tag,
+.storage-price,
+.storage-card ul {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.storage-price {
+  margin-bottom: 1.4rem; /* igualar espacio previo al botón */
+}
+
+/* Alineación uniforme del botón */
+.storage-card .btn-plan {
+  margin-top: auto; /* empuja el botón hacia abajo */
+}
+
 
 
 
