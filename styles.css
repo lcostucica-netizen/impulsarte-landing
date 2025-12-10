@@ -339,7 +339,9 @@ h1 {
 
 .plan-card.popular {
     border-color: #ffd700;
-    transform: scale(1.05);
+    /* destacar sin romper el layout */
+    transform: translateY(-15px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
 }
 .badge {
     position: absolute;
@@ -797,5 +799,6 @@ h1 {
   line-height: 1.7rem;
   color: rgba(255,255,255,0.9);
 }
+
 
 
