@@ -10,7 +10,6 @@ body {
     line-height: 1.6;
 }
 
-/* HERO */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -19,9 +18,22 @@ body {
     text-align: center;
     padding: 2rem;
     background: rgba(0,0,0,0.3);
+    position: relative;      /* para el overlay */
+    overflow: hidden;
 }
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);  /* capa oscura arriba del gradiente */
+    z-index: 0;
+}
+
 .hero-content {
     max-width: 900px;
+    position: relative;
+    z-index: 1;              /* garantiza que el texto quede arriba del overlay */
 }
 
 .logo {
@@ -799,6 +811,26 @@ h1 {
   line-height: 1.7rem;
   color: rgba(255,255,255,0.9);
 }
+/* ===== FIX: texto visible en los filtros del catálogo ===== */
+.search-box,
+.filter-select {
+  background: rgba(255, 255, 255, 0.95);  /* fondo claro */
+  color: #000;                             /* texto negro, se ve perfecto */
+  border: none;
+  border-radius: 50px;
+  padding: 0.8rem 1rem;
+  min-width: 220px;
+}
+
+.filter-select {
+  min-width: 180px;
+}
+
+/* Placeholder legible */
+.search-box::placeholder {
+  color: #666;
+}
+
 
 
 
