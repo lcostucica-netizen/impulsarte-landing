@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-      <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impulsarte AI</title>
 
+    <!-- CSS principal -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- (Opcional) Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
 </head>
-  <!-- (Opcional) Font Awesome, si lo estabas usando -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
+<body>
+
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="hero-content">
@@ -74,7 +78,12 @@
         <h2>Nuestro Catálogo</h2>
         <p class="catalog-subtitle">Más de 90 obras originales disponibles</p>
         <div class="catalog-filters">
-            <input type="text" id="searchInput" placeholder=" Buscar obra #..." class="search-box">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder=" Buscar obra #..."
+                class="search-box"
+            >
             <select id="techniqueFilter" class="filter-select">
                 <option value="">Todas las técnicas</option>
                 <option value="Óleo">Óleo</option>
@@ -117,123 +126,120 @@
         </button>
     </section>
 
-   <div class="plans-section" id="planes">
-    <h3>Planes para tu espacio</h3>
-    <p>Elegí el plan que mejor se adapta a tu oficina, consultorio o cowork. Todos incluyen instalación y curaduría.</p>
+    <!-- Planes para espacios -->
+    <section class="plans-section" id="planes">
+        <h3>Planes para tu espacio</h3>
+        <p>Elegí el plan que mejor se adapta a tu oficina, consultorio o cowork. Todos incluyen instalación y curaduría.</p>
 
-    <div class="plans-grid">
-        <!-- Plan Esencial -->
-        <div class="plan-card">
-            <h4>Plan Esencial</h4>
-            <p class="price">$19.900<span>/mes</span></p>
-            <ul>
-                <li>✓ 3 obras seleccionadas con IA y curaduría</li>
-                <li>✓ 1 rotación anual (renovación sin cargo)</li>
-                <li>✓ Instalación profesional</li>
-                <li>✓ Informe estético del espacio</li>
-                <li>✓ Garantía de conservación</li>
-            </ul>
-            <button class="btn-plan" onclick="openModal('contact')">Quiero este plan</button>
-        </div>
+        <div class="plans-grid">
+            <!-- Plan Esencial -->
+            <div class="plan-card">
+                <h4>Plan Esencial</h4>
+                <p class="price">$19.900<span>/mes</span></p>
+                <ul>
+                    <li>✓ 3 obras seleccionadas con IA y curaduría</li>
+                    <li>✓ 1 rotación anual (renovación sin cargo)</li>
+                    <li>✓ Instalación profesional</li>
+                    <li>✓ Informe estético del espacio</li>
+                    <li>✓ Garantía de conservación</li>
+                </ul>
+                <button class="btn-plan" onclick="openModal('contact')">Quiero este plan</button>
+            </div>
 
-        <!-- Plan Profesional -->
-        <div class="plan-card popular">
-            <div class="badge">Más elegido</div>
-            <h4>Plan Profesional</h4>
-            <p class="price">$29.900<span>/mes</span></p>
-            <ul>
-                <li>✓ 5 obras seleccionadas a medida con IA</li>
-                <li>✓ 2 rotaciones anuales</li>
-                <li>✓ Instalación y desinstalación profesional</li>
-                <li>✓ Informe estético + propuesta de mejora</li>
-                <li>✓ Gestión logística completa</li>
-            </ul>
-            <button class="btn-plan" onclick="openModal('contact')">Quiero este plan</button>
-        </div>
+            <!-- Plan Profesional -->
+            <div class="plan-card popular">
+                <div class="badge">Más elegido</div>
+                <h4>Plan Profesional</h4>
+                <p class="price">$29.900<span>/mes</span></p>
+                <ul>
+                    <li>✓ 5 obras seleccionadas a medida con IA</li>
+                    <li>✓ 2 rotaciones anuales</li>
+                    <li>✓ Instalación y desinstalación profesional</li>
+                    <li>✓ Informe estético + propuesta de mejora</li>
+                    <li>✓ Gestión logística completa</li>
+                </ul>
+                <button class="btn-plan" onclick="openModal('contact')">Quiero este plan</button>
+            </div>
 
-        <!-- Plan Premium -->
-        <div class="plan-card">
-            <h4>Plan Premium</h4>
-            <p class="price">$39.900<span>/mes</span></p>
-            <ul>
-                <li>✓ 7 obras seleccionadas y curadas según tu identidad visual</li>
-                <li>✓ 3 rotaciones anuales (cambio cada 4 meses)</li>
-                <li>✓ Informe estético + propuesta de identidad visual</li>
-                <li>✓ Instalación completa + mantenimiento</li>
-                <li>✓ Servicio integral llave en mano</li>
-            </ul>
-            <button class="btn-plan" onclick="openModal('contact')">Quiero este plan</button>
-        </div>
-    </div>
-</div>
-
-</section>
-
-                </div>
+            <!-- Plan Premium -->
+            <div class="plan-card">
+                <h4>Plan Premium</h4>
+                <p class="price">$39.900<span>/mes</span></p>
+                <ul>
+                    <li>✓ 7 obras seleccionadas y curadas según tu identidad visual</li>
+                    <li>✓ 3 rotaciones anuales (cambio cada 4 meses)</li>
+                    <li>✓ Informe estético + propuesta de identidad visual</li>
+                    <li>✓ Instalación completa + mantenimiento</li>
+                    <li>✓ Servicio integral llave en mano</li>
+                </ul>
+                <button class="btn-plan" onclick="openModal('contact')">Quiero este plan</button>
             </div>
         </div>
+    </section>
 
-        <div class="plans-section" id="planes-artistas">
-            <h3>Para Artistas</h3>
-            <div class="plans-grid">
-                <div class="plan-card">
-                    <h4>Básico</h4>
-                    <p class="price">GRATIS</p>
-                    <ul>
-                        <li>✓ Publicar obras en el catálogo</li>
-                        <li>✓ Comisión 30%</li>
-                        <li>✓ Inclusión en propuestas a empresas</li>
-                    </ul>
-                    <button class="btn-plan" onclick="contactPlan('Artista Básico')">Comenzar</button>
-                </div>
-                <div class="plan-card popular">
-                    <div class="badge">Popular</div>
-                    <h4>Destacado</h4>
-                    <p class="price">$15K<span>/mes</span></p>
-                    <ul>
-                        <li>✓ Comisión 20%</li>
-                        <li>✓ Mayor visibilidad en propuestas</li>
-                        <li>✓ 1 valoración IA/mes</li>
-                    </ul>
-                    <button class="btn-plan" onclick="contactPlan('Artista Destacado')">Elegir</button>
-                </div>
-                <div class="plan-card">
-                    <h4>Premium</h4>
-                    <p class="price">$30K<span>/mes</span></p>
-                    <ul>
-                        <li>✓ Comisión 15%</li>
-                        <li>✓ Máxima prioridad en propuestas</li>
-                        <li>✓ 3 valoraciones IA/mes</li>
-                    </ul>
-                    <button class="btn-plan" onclick="contactPlan('Artista Premium')">Elegir</button>
-                </div>
+    <!-- Planes para artistas -->
+    <section class="plans-section" id="planes-artistas">
+        <h3>Para Artistas</h3>
+        <div class="plans-grid">
+            <div class="plan-card">
+                <h4>Básico</h4>
+                <p class="price">GRATIS</p>
+                <ul>
+                    <li>✓ Publicar obras en el catálogo</li>
+                    <li>✓ Comisión 30%</li>
+                    <li>✓ Inclusión en propuestas a empresas</li>
+                </ul>
+                <button class="btn-plan" onclick="contactPlan('Artista Básico')">Comenzar</button>
+            </div>
+            <div class="plan-card popular">
+                <div class="badge">Popular</div>
+                <h4>Destacado</h4>
+                <p class="price">$15K<span>/mes</span></p>
+                <ul>
+                    <li>✓ Comisión 20%</li>
+                    <li>✓ Mayor visibilidad en propuestas</li>
+                    <li>✓ 1 valoración IA/mes</li>
+                </ul>
+                <button class="btn-plan" onclick="contactPlan('Artista Destacado')">Elegir</button>
+            </div>
+            <div class="plan-card">
+                <h4>Premium</h4>
+                <p class="price">$30K<span>/mes</span></p>
+                <ul>
+                    <li>✓ Comisión 15%</li>
+                    <li>✓ Máxima prioridad en propuestas</li>
+                    <li>✓ 3 valoraciones IA/mes</li>
+                </ul>
+                <button class="btn-plan" onclick="contactPlan('Artista Premium')">Elegir</button>
             </div>
         </div>
     </section>
 
     <!-- Contacto -->
-   <section class="contact" id="contacto">
-  <h2>Contacto</h2>
+    <section class="contact" id="contacto">
+        <h2>Contacto</h2>
 
-  <div class="contact-info">
-    <a href="https://wa.me/5491167313343" class="whatsapp-icon" target="_blank">
-      <img src="https://img.icons8.com/?size=100&id=16713&format=png&color=ffffff" alt="WhatsApp">
-      Chatear por WhatsApp
-    </a>
+        <div class="contact-info">
+            <a href="https://wa.me/5491167313343" class="whatsapp-icon" target="_blank" rel="noopener noreferrer">
+                <img
+                    src="https://img.icons8.com/?size=100&id=16713&format=png&color=ffffff"
+                    alt="WhatsApp"
+                >
+                Chatear por WhatsApp
+            </a>
 
-    <p>Vicente López, Buenos Aires</p>
+            <p>Vicente López, Buenos Aires</p>
 
-    <p>
-      <a href="https://instagram.com/impulsarteme" target="_blank">
-        Instagram: @impulsarteme
-      </a>
-    </p>
-  </div>
-</section>
-
-            <p> Vicente López, Buenos Aires</p>
-            <p><a href="https://instagram.com/impulsarteme" target="_blank">Instagram: @impulsarteme</a></p>
+            <p>
+                <a href="https://instagram.com/impulsarteme" target="_blank" rel="noopener noreferrer">
+                    Instagram: @impulsarteme
+                </a>
+            </p>
         </div>
     </section>
 
-  
+    <!-- JS (opcional) -->
+    <script src="script.js"></script>
+</body>
+</html>
+
