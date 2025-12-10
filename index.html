@@ -240,6 +240,74 @@
 
     <!-- JS (opcional) -->
     <script src="script.js"></script>
+        <!-- Modal: Recomendación para tu espacio -->
+    <div class="modal" id="modalRecommendation">
+      <div class="modal-content">
+        <button class="close" onclick="closeModal('recommendation')">&times;</button>
+        <h2>Quiero decorar mi espacio</h2>
+        <p>
+          Contanos brevemente cómo es tu oficina, consultorio o cowork y te
+          enviamos una propuesta curada con IA y selección de obras.
+        </p>
+        <a
+          href="https://wa.me/5491167313343?text=Hola%2C+quiero+decorar+mi+espacio+con+Impulsarte+AI"
+          target="_blank"
+          class="btn-whatsapp"
+        >
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Modal: Artistas -->
+    <div class="modal" id="modalArtists">
+      <div class="modal-content">
+        <button class="close" onclick="closeModal('artists')">&times;</button>
+        <h2>Soy artista</h2>
+        <p>
+          Si querés sumar tus obras al catálogo para exhibirlas en oficinas y
+          espacios de trabajo, dejame tu contacto y un link a tu portfolio.
+        </p>
+        <a
+          href="https://wa.me/5491167313343?text=Hola%2C+soy+artista+y+quiero+sumar+mis+obras+a+Impulsarte+AI"
+          target="_blank"
+          class="btn-whatsapp"
+        >
+          Postular mis obras
+        </a>
+      </div>
+    </div>
+
+    <!-- Modal: Contacto general (botones "Quiero este plan") -->
+    <div class="modal" id="modalContact">
+      <div class="modal-content">
+        <button class="close" onclick="closeModal('contact')">&times;</button>
+        <h2>Coordinemos tu plan</h2>
+        <p>
+          Te contacto para coordinar una visita o una videollamada corta y
+          definir qué plan se adapta mejor a tu espacio.
+        </p>
+        <a
+          href="https://wa.me/5491167313343?text=Hola%2C+estoy+interesado+en+los+planes+de+Impulsarte+AI"
+          target="_blank"
+          class="btn-whatsapp"
+        >
+          Hablar ahora por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Modal: Detalle de obra (catálogo) -->
+    <div class="modal modal-large" id="modalArtwork">
+      <div class="modal-content">
+        <button class="close" onclick="closeModal('artwork')">&times;</button>
+        <div id="artworkDetail">
+          <!-- El contenido se rellena desde script.js (renderArtworks / openArtworkModal) -->
+        </div>
+      </div>
+    </div>
+
 </body>
 </html>
+
 
