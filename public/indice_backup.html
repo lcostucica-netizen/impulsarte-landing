@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impulsarte AI</title>
+
+    <!-- CSS principal -->
+<link rel="stylesheet" href="/estilos.css">
+
+    <!-- (Opcional) Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="logo">✨</div>
+            <h1>Impulsarte <span class="gradient">AI</span></h1>
+
+            <p class="tagline">
+                Decoramos oficinas y espacios de trabajo con arte real, seleccionado con IA.
+            </p>
+
+            <p class="description">
+                Transformamos tus ambientes con obras reales y un servicio llave en mano:
+                selección, instalación y rotación del arte incluidas.
+            </p>
+
+            <div class="cta-buttons">
+                <button class="btn-primary" onclick="openModal('recommendation')">
+                    Quiero decorar mi espacio
+                </button>
+                <button class="btn-secondary" onclick="openModal('artists')">
+                    Soy artista
+                </button>
+            </div>
+
+            <p class="hero-note">
+                Ideal para empresas, coworks, estudios y consultorios.
+            </p>
+        </div>
+    </section>
+
+    <!-- Cómo Funciona -->
+    <section class="how-it-works" id="como-funciona">
+        <h2>¿Cómo funciona?</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Conocemos tu espacio</h3>
+                <p>Te visitamos o nos compartís fotos de tu oficina y espacios de trabajo. Vemos marca, colores y estilo.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Seleccionamos el arte</h3>
+                <p>La IA propone combinaciones de obras y nuestra curaduría ajusta los detalles. Vos aprobás la propuesta final.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Instalamos por vos</h3>
+                <p>Llevamos las obras, las colgamos y dejamos tus ambientes listos, sin que tengas que coordinar nada.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Renovamos el arte</h3>
+                <p>Rotamos las obras cada 3 o 6 meses para que tu oficina siempre se vea actualizada.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo -->
+    <section class="catalog" id="catalogo">
+        <h2>Nuestro Catálogo</h2>
+        <p class="catalog-subtitle">Más de 200 obras originales disponibles</p>
+        <div class="catalog-filters">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder=" Buscar obra #..."
+                class="search-box"
+            >
+            <select id="techniqueFilter" class="filter-select">
+                <option value="">Todas las técnicas</option>
+                <option value="Óleo">Óleo</option>
+                <option value="Acrílico">Acrílico</option>
+                <option value="Mixta">Mixta</option>
+            </select>
+        </div>
+        <div class="artworks-grid" id="artworksGrid">
+            <!-- Las obras se cargan aquí -->
+        </div>
+    </section>
+
+    <!-- Para Artistas -->
+    <section class="for-artists" id="artistas">
+        <h2>¿Sos artista?</h2>
+        <p class="artists-subtitle">Mostrá tus obras en oficinas y espacios de trabajo reales</p>
+        <div class="artists-content">
+            <div class="artist-box">
+                <div class="artist-icon"></div>
+                <h3>Publicá tus obras</h3>
+                <p>Agregá tus creaciones a nuestro catálogo para propuestas corporativas.</p>
+                <p class="artist-subtext">Tus obras se ven en empresas, coworks y estudios.</p>
+            </div>
+            <div class="artist-box">
+                <div class="artist-icon"></div>
+                <h3>Valoración con IA</h3>
+                <p>Obtené un precio sugerido y referencias basadas en el mercado actual.</p>
+                <p class="artist-subtext">Te ayudamos a presentar mejor tu trabajo.</p>
+            </div>
+            <div class="artist-box">
+                <div class="artist-icon"></div>
+                <h3>Ingresos por alquiler</h3>
+                <p>Tus obras generan ingresos cuando se exhiben en espacios de trabajo.</p>
+                <p class="artist-subtext">Modelo de comisión por cada alquiler.</p>
+            </div>
+        </div>
+
+        <button class="btn-primary" onclick="openModal('artists')">
+            Sumar mis obras
+        </button>
+    </section>
+
+    <!-- Planes para espacios -->
+    <section class="plans-section" id="planes">
+        <h3>Planes para tu espacio</h3>
+        <p>Elegí el plan que mejor se adapta a tu oficina, consultorio o cowork. Todos incluyen instalación y curaduría.</p>
+
+        <div class="plans-grid">
+            <!-- Plan Esencial -->
+            <div class="plan-card">
+                <h4>Plan Esencial</h4>
+                <p class="price">$19.900<span>/mes</span></p>
+                <ul>
+                    <li>✓ 3 obras seleccionadas con IA y curaduría</li>
+                    <li>✓ 1 rotación anual (renovación sin cargo)</li>
+                    <li>✓ Instalación profesional</li>
+                    <li>✓ Informe estético del espacio</li>
+                    <li>✓ Garantía de conservación</li>
+                </ul>
+                <button class="btn-plan" onclick="openModal('contact')">Quiero este plan</button>
+            </div>
+
+            <!-- Plan Profesional -->
+            <div class="plan-card popular">
+                <div class="badge">Más elegido</div>
+                <h4>Plan Profesional</h4>
+                <p class="price">$29.900<span>/mes</span></p>
+                <ul>
+                    <li>✓ 5 obras seleccionadas a medida con IA</li>
+                    <li>✓ 2 rotaciones anuales</li>
+                    <li>✓ Instalación y desinstalación profesional</li>
+                    <li>✓ Informe estético + propuesta de mejora</li>
+                    <li>✓ Gestión logística completa</li>
+                </ul>
+                <button class="btn-plan" onclick="openModal('contact')">Quiero este plan</button>
+            </div>
+
+            <!-- Plan Premium -->
+            <div class="plan-card">
+                <h4>Plan Premium</h4>
+                <p class="price">$39.900<span>/mes</span></p>
+                <ul>
+                    <li>✓ 7 obras seleccionadas y curadas según tu identidad visual</li>
+                    <li>✓ 3 rotaciones anuales (cambio cada 4 meses)</li>
+                    <li>✓ Informe estético + propuesta de identidad visual</li>
+                    <li>✓ Instalación completa + mantenimiento</li>
+                    <li>✓ Servicio integral llave en mano</li>
+                </ul>
+                <button class="btn-plan" onclick="openModal('contact')">Quiero este plan</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planes para artistas -->
+    <section class="plans-section" id="planes-artistas">
+        <h3>Para Artistas</h3>
+        <div class="plans-grid">
+            <div class="plan-card">
+                <h4>Básico</h4>
+                <p class="price">GRATIS</p>
+                <ul>
+                    <li>✓ Publicar obras en el catálogo</li>
+                    <li>✓ Comisión 30%</li>
+                    <li>✓ Inclusión en propuestas a empresas</li>
+                </ul>
+                <button class="btn-plan" onclick="contactPlan('Artista Básico')">Comenzar</button>
+            </div>
+            <div class="plan-card popular">
+                <div class="badge">Popular</div>
+                <h4>Destacado</h4>
+                <p class="price">$15.000<span>/mes</span></p>
+                <ul>
+                    <li>✓ Comisión 20%</li>
+                    <li>✓ Mayor visibilidad en propuestas</li>
+                    <li>✓ 1 valoración IA/mes</li>
+                </ul>
+                <button class="btn-plan" onclick="contactPlan('Artista Destacado')">Elegir</button>
+            </div>
+            <div class="plan-card">
+                <h4>Premium</h4>
+                <p class="price">$30.000<span>/mes</span></p>
+                <ul>
+                    <li>✓ Comisión 15%</li>
+                    <li>✓ Máxima prioridad en propuestas</li>
+                    <li>✓ 3 valoraciones IA/mes</li>
+                </ul>
+                <button class="btn-plan" onclick="contactPlan('Artista Premium')">Elegir</button>
+            </div>
+        </div>
+    </section>
+    <!-- Guardado de Obras -->
+    <!-- Nota aclaratoria para artistas -->
+<p class="storage-note">
+    El servicio de guardado es independiente de los Planes para Artistas.
+    Podés contratarlo tengas o no un plan activo.
+</p>
+    <section class="storage-section" id="guardado-obras">
+        <h3>Guardado de obras</h3>
+        <p class="storage-subtitle">
+            Liberá espacio en tu taller y dejá que tus obras entren en el circuito de arte corporativo:
+            oficinas, consultorios y coworks.
+        </p>
+
+        <div class="storage-grid">
+            <!-- Opción 1: Guardado simple -->
+            <div class="storage-card">
+                <h4>Guardado simple</h4>
+                <p class="storage-tag">Solo espacio, sin rotación</p>
+                <p class="storage-price">$5.000<span>/obra por mes</span></p>
+                <ul>
+                    <li>✓ Almacenamiento seguro</li>
+                    <li>✓ Registro y etiquetado de cada obra</li>
+                    <li>✓ Acceso a tus obras cuando lo necesites</li>
+                </ul>
+                <button class="btn-plan" onclick="openModal('storage')">
+                    Quiero guardar mis obras
+                </button>
+            </div>
+
+            <!-- Opción 2: Guardado con rotación -->
+            <div class="storage-card storage-card-highlight">
+                <h4>Guardado con rotación</h4>
+                <p class="storage-tag">Ideal para Impulsarte AI</p>
+                <p class="storage-price">$2.000<span>/obra por mes</span></p>
+                <ul>
+                    <li>✓ Todo lo del guardado simple</li>
+                    <li>✓ Tus obras se suman al catálogo corporativo</li>
+                    <li>✓ Posibilidad de generar ingresos por alquiler</li>
+                    <li>✓ Prioridad en propuestas a empresas</li>
+                </ul>
+                <button class="btn-plan" onclick="openModal('storage')">
+                    Quiero que mis obras trabajen
+                </button>
+            </div>
+
+            <!-- Opción 3: Varios cuadros -->
+            <div class="storage-card">
+                <h4>Planes para varios cuadros</h4>
+                <p class="storage-tag">Para artistas con 5 a 10 obras o más</p>
+                <ul class="storage-list-tight">
+                    <li>✓ Plan 5 obras: $12.000 / mes</li>
+                    <li>✓ Plan 10 obras: $18.000 / mes</li>
+                    <li>✓ Guardado profesional + opción de rotación</li>
+                    <li>✓ Ideal para liberar espacio en casa o taller</li>
+                </ul>
+                <button class="btn-plan" onclick="openModal('storage')">
+                    Consultar por mi caso
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contact" id="contacto">
+        <h2>Contacto</h2>
+
+        <div class="contact-info">
+            <a href="https://wa.me/5491167313343" class="whatsapp-icon" target="_blank" rel="noopener noreferrer">
+                <img
+                    src="https://img.icons8.com/?size=100&id=16713&format=png&color=ffffff"
+                    alt="WhatsApp"
+                >
+                Chatear por WhatsApp
+            </a>
+
+            <p>Vicente López, Buenos Aires</p>
+
+            <p>
+                <a href="https://instagram.com/impulsarteme" target="_blank" rel="noopener noreferrer">
+                    Instagram: @impulsarteme
+                </a>
+            </p>
+        </div>
+    </section>
+
+    <!-- JS (opcional) -->
+           <!-- Modal: Recomendación para tu espacio -->
+    <div class="modal" id="modalRecommendation">
+      <div class="modal-content">
+        <button class="close" onclick="closeModal('recommendation')">&times;</button>
+        <h2>Quiero decorar mi espacio</h2>
+        <p>
+          Contanos brevemente cómo es tu oficina, consultorio o cowork y te
+          enviamos una propuesta curada con IA y selección de obras.
+        </p>
+        <a
+          href="https://wa.me/5491167313343?text=Hola%2C+quiero+decorar+mi+espacio+con+Impulsarte+AI"
+          target="_blank"
+          class="btn-whatsapp"
+        >
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Modal: Artistas -->
+    <div class="modal" id="modalArtists">
+      <div class="modal-content">
+        <button class="close" onclick="closeModal('artists')">&times;</button>
+        <h2>Soy artista</h2>
+        <p>
+          Si querés sumar tus obras al catálogo para exhibirlas en oficinas y
+          espacios de trabajo, dejanos tu contacto y un link a tu portfolio.
+        </p>
+        <a
+          href="https://wa.me/5491167313343?text=Hola%2C+soy+artista+y+quiero+sumar+mis+obras+a+Impulsarte+AI"
+          target="_blank"
+          class="btn-whatsapp"
+        >
+          Postular mis obras
+        </a>
+      </div>
+    </div>
+
+    <!-- Modal: Contacto general (botones "Quiero este plan") -->
+    <div class="modal" id="modalContact">
+      <div class="modal-content">
+        <button class="close" onclick="closeModal('contact')">&times;</button>
+        <h2>Coordinemos tu plan</h2>
+        <p>
+          Te contactamos para coordinar una visita o una videollamada corta y
+          definir qué plan se adapta mejor a tu espacio.
+        </p>
+        <a
+          href="https://wa.me/5491167313343?text=Hola%2C+estoy+interesado+en+los+planes+de+Impulsarte+AI"
+          target="_blank"
+          class="btn-whatsapp"
+        >
+          Hablar ahora por WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Modal: Detalle de obra (catálogo) -->
+    <div class="modal modal-large" id="modalArtwork">
+      <div class="modal-content">
+        <button class="close" onclick="closeModal('artwork')">&times;</button>
+        <div id="artworkDetail">
+          <!-- El contenido se rellena desde script.js (renderArtworks / openArtworkModal) -->
+        </div>
+      </div>
+    </div>
+    <!-- Modal: Guardado de obras -->
+    <div class="modal" id="modalStorage">
+      <div class="modal-content">
+        <button class="close" onclick="closeModal('storage')">&times;</button>
+        <h2>Quiero guardar mis obras</h2>
+        <p>
+          Contame cuántas obras tenés, medidas aproximadas y si estás interesado
+          solo en guardado o también en la opción con rotación en empresas.
+        </p>
+        <a
+          href="https://wa.me/5491167313343?text=Hola%2C+quiero+informaci%C3%B3n+sobre+el+servicio+de+guardado+de+obras+de+Impulsarte+AI"
+          target="_blank"
+          class="btn-whatsapp"
+        >
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+ <script src="/script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
