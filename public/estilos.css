@@ -905,6 +905,13 @@ h1 {
   list-style: none;
   padding-left: 0;
 }
+.nota-planes {
+  max-width: 900px;
+  margin: 1.5rem auto 3rem auto;
+  text-align: center;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
 
 
 
