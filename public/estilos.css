@@ -896,6 +896,16 @@ h1 {
   font-size: 1.2rem;
   opacity: 0.8;
 }
+.plan-card ul {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.plan-card li {
+  list-style: none;
+  padding-left: 0;
+}
+
 
 
 
