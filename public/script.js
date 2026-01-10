@@ -126,4 +126,15 @@ function contactPlan(plan) {
 
 // CARGAR OBRAS AL INICIO
 renderArtworks();
+// FAQ accordion
+document.querySelectorAll(".faq-item .faq-question").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const item = btn.closest(".faq-item");
+    item.classList.toggle("open");
+
+    const icon = btn.querySelector(".faq-icon");
+    if (icon) icon.textContent = item.classList.contains("open") ? "–" : "+";
+  });
+});
+
 
