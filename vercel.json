@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    {"source": "/obra/n12", "destination": "/público/obra/n12/index.html"},
-    {"source": "/(.*)", "destination": "/público/index.html"}
+    {"source": "/obra/n12", "destination": "/public/obra/n12/index.html"},
+    {"source": "/(.*)", "destination": "/public/index.html"}
   ]
 }
