@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Obra N°12 · impulsarteAI</title>
+  <meta name="description" content="Una superficie cálida atravesada por venas en azul y violeta. Arte seleccionado para la Sala de Reuniones del Hospital Británico por impulsarteAI.">
+  <meta property="og:title" content="Obra N°12 · impulsarteAI × Hospital Británico">
+  <meta property="og:description" content="Una obra que habla el mismo idioma que este espacio: decisiones, conexiones, visión de futuro.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: #f5f4f0;
+      color: #1a1a1a;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: #fff;
+      border-bottom: 0.5px solid #e5e2dc;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .topbar-logo {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
+    .topbar-partner {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .topbar-x {
+      font-size: 12px;
+      color: #ccc;
+      font-weight: 300;
+    }
+    .topbar-hb {
+      height: 28px;
+      width: auto;
+      display: block;
+      opacity: 0.75;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      width: 100%;
+      aspect-ratio: 4/3;
+      max-height: 380px;
+      background: #e8e2d8;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero img.obra-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Placeholder mientras no hay foto */
+    .hero-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #e8ddd0 0%, #d4c8b8 50%, #c8bfb0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-placeholder span {
+      font-size: 13px;
+      color: #b0a898;
+      letter-spacing: 0.05em;
+    }
+    .hero-bottom-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60px;
+      background: linear-gradient(to top, #f5f4f0, transparent);
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ── OBRA HEADER ── */
+    .obra-header {
+      background: #fff;
+      padding: 24px 20px 20px;
+      border-bottom: 0.5px solid #e5e2dc;
+    }
+    .obra-espacio {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #1B3F8B;
+      margin-bottom: 8px;
+    }
+    .obra-num {
+      font-size: 36px;
+      font-weight: 300;
+      color: #1a1a1a;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .obra-frase {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      background: #fff;
+      padding: 24px 20px;
+      margin-top: 8px;
+    }
+
+    .nivel-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 14px;
+    }
+
+    /* ── INTRO TEXT ── */
+    .intro-text {
+      font-size: 16px;
+      line-height: 1.75;
+      color: #333;
+    }
+
+    /* ── AUDIO ── */
+    .audio-btn {
+      width: 100%;
+      padding: 14px 16px;
+      background: #f5f4f0;
+      border: 0.5px solid #e5e2dc;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      text-align: left;
+    }
+    .audio-btn:hover { border-color: #1B3F8B; background: #eef2fa; }
+    .audio-btn.playing { border-color: #1B3F8B; background: #eef2fa; }
+
+    .play-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #1B3F8B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #fff;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    .audio-btn.playing .play-circle { background: #2d5bbf; }
+
+    .audio-meta { flex: 1; }
+    .audio-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #222;
+      margin-bottom: 2px;
+    }
+    .audio-btn.playing .audio-title { color: #1B3F8B; }
+    .audio-sub { font-size: 11px; color: #aaa; }
+
+    .progress-wrap {
+      display: none;
+      margin-top: 12px;
+    }
+    .progress-wrap.vis { display: block; }
+    .progress-track {
+      height: 2px;
+      background: #e5e2dc;
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 5px;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #1B3F8B;
+      border-radius: 2px;
+      transition: width 0.6s linear;
+    }
+    .progress-times {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #bbb;
+    }
+
+    .audio-script {
+      display: none;
+      margin-top: 16px;
+      padding: 16px;
+      background: #f5f4f0;
+      border-radius: 10px;
+      border-left: 3px solid #1B3F8B;
+      font-size: 14px;
+      line-height: 1.75;
+      color: #666;
+      font-style: italic;
+    }
+    .audio-script.vis { display: block; }
+
+    /* ── FICHA ── */
+    .ficha-toggle {
+      width: 100%;
+      background: transparent;
+      border: 0.5px solid #e5e2dc;
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-size: 13px;
+      color: #666;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: border-color 0.2s;
+    }
+    .ficha-toggle:hover { border-color: #bbb; }
+    .ficha-arrow {
+      color: #ccc;
+      font-size: 18px;
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+    .ficha-toggle.open .ficha-arrow { transform: rotate(180deg); }
+
+    .ficha-rows {
+      display: none;
+      margin-top: 14px;
+    }
+    .ficha-rows.open { display: block; }
+
+    .frow {
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 0.5px solid #f0ede8;
+      font-size: 13px;
+    }
+    .frow:last-child { border-bottom: none; }
+    .fl { color: #aaa; }
+    .fv { font-weight: 500; color: #333; }
+
+    .contexto {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: #f5f4f0;
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #777;
+    }
+
+    /* ── PROYECTO / FOOTER ── */
+    .proyecto {
+      background: #fff;
+      padding: 24px 20px 40px;
+      margin-top: 8px;
+    }
+
+    .collab-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 0.5px solid #f0ede8;
+    }
+    .collab-imp {
+      height: 22px;
+      width: auto;
+    }
+    .collab-x {
+      font-size: 13px;
+      color: #ddd;
+    }
+    .collab-hb {
+      height: 22px;
+      width: auto;
+      opacity: 0.6;
+    }
+
+    .proyecto-desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #999;
+      margin-bottom: 20px;
+    }
+
+    .wa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 15px;
+      background: #25D366;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .wa-btn:hover { opacity: 0.9; }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 16px;
+      font-size: 12px;
+      color: #bbb;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #888; }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <img class="topbar-logo" src="imagenes/Logo_Impulsarte_AI.png" alt="impulsarteAI">
+  <div class="topbar-partner">
+    <span class="topbar-x">×</span>
+    <img class="topbar-hb" src="imagenes/Logo_hospital_britanico.jpg" alt="Hospital Británico">
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- HERO — reemplazá el div.hero-placeholder por: -->
+  <!-- <img class="obra-img" src="imagenes/n12.jpg" alt="Obra N°12"> -->
+  <!-- cuando tengas la foto de la obra -->
+  <div class="hero">
+    <div class="hero-placeholder">
+      <span>Foto de la obra · N°12</span>
+    </div>
+    <div class="hero-bottom-fade"></div>
+  </div>
+
+  <!-- OBRA HEADER -->
+  <div class="obra-header">
+    <div class="obra-espacio">Hospital Británico · Sala de reuniones</div>
+    <div class="obra-num">N°12</div>
+    <div style="display:flex;align-items:center;gap:5px;margin-bottom:10px;">
+      <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5zm0 6.5C5.17 6.5 4.5 5.83 4.5 5S5.17 3.5 6 3.5 7.5 4.17 7.5 5 6.83 6.5 6 6.5z" fill="#1B3F8B" opacity="0.5"/>
+      </svg>
+      <span style="font-size:12px;color:#1B3F8B;opacity:0.7;">Sala de reuniones · Dirección Médica · Hospital Británico</span>
+    </div>
+    <p class="obra-frase">Una obra que habla el mismo idioma que este espacio: decisiones, conexiones, visión de futuro.</p>
+  </div>
+
+  <!-- NIVEL 1 — LA OBRA -->
+  <div class="section">
+    <div class="nivel-label">La obra</div>
+    <p class="intro-text">Su superficie cálida está atravesada por venas finas en azul y violeta — circuitos, redes, mapas. La trama invisible que sostiene cada decisión importante.</p>
+  </div>
+
+  <!-- NIVEL 2 — AUDIO -->
+  <div class="section">
+    <div class="nivel-label">Escuchar la obra</div>
+
+    <button class="audio-btn" id="audioBtn" onclick="toggleAudio()" aria-label="Reproducir narración de la obra">
+      <div class="play-circle" id="playCircle">▶</div>
+      <div class="audio-meta">
+        <div class="audio-title" id="audioTitle">Escuchar la obra</div>
+        <div class="audio-sub">Narración · aprox. 40 seg</div>
+      </div>
+    </button>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-times">
+        <span id="timeElapsed">0:00</span>
+        <span>0:40</span>
+      </div>
+    </div>
+
+    <!-- AUDIO REAL: descomentá esto cuando tengas el archivo -->
+    <!-- <audio id="audioEl" src="imagenes/audio-n12.mp3" preload="none"></audio> -->
+
+    <div class="audio-script" id="audioScript">
+      "Ante usted hay una obra que no necesita título para hablar. Su superficie cálida —terracota, ocre, blanco— está atravesada por finas líneas en azul y violeta que recuerdan circuitos, venas, o los mapas que trazamos cuando intentamos entender algo complejo. Fue seleccionada para este espacio porque habla de lo mismo que sucede aquí: decisiones estratégicas, conexiones, visión de futuro. Mirela el tiempo que quiera. No tiene apuro."
+    </div>
+  </div>
+
+  <!-- NIVEL 3 — FICHA -->
+  <div class="section">
+    <div class="nivel-label">Ficha técnica</div>
+
+    <button class="ficha-toggle" id="fichaToggle" onclick="toggleFicha()">
+      <span>Ver detalles y contexto curatorial</span>
+      <span class="ficha-arrow" id="fichaArrow">⌄</span>
+    </button>
+
+    <div class="ficha-rows" id="fichaRows">
+      <div class="frow"><span class="fl">Número</span><span class="fv">N°12</span></div>
+      <div class="frow"><span class="fl">Técnica</span><span class="fv">Técnica mixta</span></div>
+      <div class="frow"><span class="fl">Medidas</span><span class="fv">80 × 100 cm</span></div>
+      <div class="frow"><span class="fl">Soporte</span><span class="fv">Tela</span></div>
+      <div class="frow"><span class="fl">Estado</span><span class="fv">En exhibición · Sala de reuniones, Dirección Médica</span></div>
+      <div class="contexto">
+        Seleccionada para la Sala de Reuniones de la Dirección Médica del Hospital Británico. La obra transmite innovación sin perder la solidez institucional que el entorno requiere. Sus venas en azul y violeta sobre superficie cálida evocan precisión, sofisticación y visión estratégica — exactamente la intención del espacio.
+      </div>
+    </div>
+  </div>
+
+  <!-- NIVEL 4 — PROYECTO -->
+  <div class="proyecto">
+    <div class="nivel-label">El proyecto</div>
+    <div class="collab-bar">
+      <img class="collab-imp" src="imagenes/Logo_Impulsarte_AI.png" alt="impulsarteAI">
+      <span class="collab-x">×</span>
+      <img class="collab-hb" src="imagenes/Logo_hospital_britanico.jpg" alt="Hospital Británico">
+    </div>
+    <p class="proyecto-desc">
+      Esta obra forma parte de una propuesta para enriquecer la experiencia cultural y emocional del Hospital Británico. Arte original seleccionado con criterio curatorial, instalado sin inversión inicial para la institución.
+    </p>
+    <a class="wa-btn"
+       href="https://wa.me/5491167313343?text=Hola%20Leonardo%2C%20vi%20la%20obra%20N%C2%B012%20en%20el%20Hospital%20Brit%C3%A1nico%20y%20quiero%20saber%20m%C3%A1s"
+       target="_blank"
+       rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.843L.057 23.5l5.797-1.522A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.876 9.876 0 01-5.032-1.378l-.361-.214-3.741.981.998-3.648-.235-.374A9.855 9.855 0 012.106 12C2.106 6.58 6.58 2.106 12 2.106S21.894 6.58 21.894 12 17.42 21.894 12 21.894z"/>
+      </svg>
+      Consultar sobre esta obra
+    </a>
+    <a class="back-link" href="https://impulsarteai.com">Ver más obras · impulsarteai.com</a>
+  </div>
+
+</div>
+
+<script>
+  var playing = false;
+  var timer = null;
+  var elapsed = 0;
+  var total = 40;
+
+  function toggleAudio() {
+    playing = !playing;
+    var btn = document.getElementById('audioBtn');
+    var circle = document.getElementById('playCircle');
+    var title = document.getElementById('audioTitle');
+    var wrap = document.getElementById('progressWrap');
+    var script = document.getElementById('audioScript');
+
+    if (playing) {
+      btn.classList.add('playing');
+      circle.textContent = '⏸';
+      title.textContent = 'Escuchando...';
+      wrap.classList.add('vis');
+      script.classList.add('vis');
+
+      /* Cuando tengas el audio real, reemplazá el setInterval por:
+         var audio = document.getElementById('audioEl');
+         audio.play();
+         audio.onended = function() { resetAudio(); };
+      */
+      timer = setInterval(function() {
+        elapsed++;
+        var pct = Math.min(elapsed / total * 100, 100);
+        document.getElementById('progressFill').style.width = pct + '%';
+        var s = elapsed % 60;
+        document.getElementById('timeElapsed').textContent = '0:' + (s < 10 ? '0' : '') + s;
+        if (elapsed >= total) { clearInterval(timer); resetAudio(); }
+      }, 1000);
+
+    } else {
+      clearInterval(timer);
+      btn.classList.remove('playing');
+      circle.textContent = '▶';
+      title.textContent = 'Escuchar la obra';
+    }
+  }
+
+  function resetAudio() {
+    playing = false; elapsed = 0;
+    document.getElementById('audioBtn').classList.remove('playing');
+    document.getElementById('playCircle').textContent = '▶';
+    document.getElementById('audioTitle').textContent = 'Escuchar la obra';
+    document.getElementById('progressFill').style.width = '0%';
+    document.getElementById('timeElapsed').textContent = '0:00';
+  }
+
+  function toggleFicha() {
+    var rows = document.getElementById('fichaRows');
+    var toggle = document.getElementById('fichaToggle');
+    var arrow = document.getElementById('fichaArrow');
+    var isOpen = rows.classList.contains('open');
+    rows.classList.toggle('open', !isOpen);
+    toggle.classList.toggle('open', !isOpen);
+    arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+  }
+</script>
+
+</body>
+</html>
