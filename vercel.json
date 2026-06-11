@@ -1,6 +1,5 @@
 {
   "rewrites": [
-    {"source": "/obra/:path*", "destination": "/público/obra/:path*/index.html"},
-    {"source": "/(.*)", "destination": "/público/índice.html"}
+    {"source": "/", "destination": "/público/índice.html"}
   ]
 }
