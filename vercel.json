@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/índice.html" }
+    {"source": "/obra/:path*", "destination": "/obra/:path*/index.html"},
+    {"source": "/", "destination": "/índice.html"}
   ]
 }
-
