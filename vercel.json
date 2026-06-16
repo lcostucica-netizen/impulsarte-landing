@@ -1,9 +1,11 @@
 {
   "rewrites": [
+    {"source": "/estilos.css", "destination": "/público/estilos.css"},
+    {"source": "/script.js", "destination": "/público/script.js"},
     {"source": "/obra/n12", "destination": "/público/obra/n12/index.html"},
     {"source": "/obra/n73", "destination": "/público/obra/n73/index.html"},
     {"source": "/obra/n75", "destination": "/público/obra/n75/index.html"},
-    {"source": "/obra/n90", "destination": "/público/obra/n90/index.html"},
+    {"source": "/obra/n39", "destination": "/público/obra/n39/index.html"},
     {"source": "/obra/n18", "destination": "/público/obra/n18/index.html"},
     {"source": "/obra/n16", "destination": "/público/obra/n16/index.html"},
     {"source": "/obra/n44", "destination": "/público/obra/n44/index.html"},
