@@ -1,38 +1,31 @@
-// ===== CATÁLOGO DE OBRAS =====
 const obras = [
-  { num: "N°12", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "80×100 cm", precio: 1800000, img: "/12.png" },
-  { num: "N°73", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "52×72 cm", precio: 950000, img: "/73.png" },
-  { num: "N°75", titulo: "Sin título", artista: "–", tecnica: "Óleo", medidas: "100×70 cm", precio: 2100000, img: "/75.png" },
-  { num: "N°39", titulo: "Entre líneas", artista: "Susana Mercado", tecnica: "Mixta", medidas: "90×110 cm", precio: 2000000, img: null },
-  { num: "N°18", titulo: "Paisaje I", artista: "Juan Puyssecur", tecnica: "Acrílico", medidas: "99×96 cm", precio: 1600000, img: "/18.png" },
-  { num: "N°16", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "80×100 cm", precio: 1400000, img: "/16.png" },
-  { num: "N°44", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "100×100 cm", precio: 1700000, img: "/44.png" },
-  { num: "N°64", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "105×65 cm", precio: 1200000, img: "/64.png" },
-  { num: "N°68", titulo: "Sin título", artista: "–", tecnica: "Óleo", medidas: "90×60 cm", precio: 1500000, img: "/68.png" },
-  { num: "N°90", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "–", precio: 1400000, img: "/90.png" },
-  { num: "N°20", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "90×120 cm", precio: 1900000, img: null },
-  { num: "N°1",  titulo: "Joven", artista: "Peter Sussmann", tecnica: "Óleo", medidas: "60×90 cm", precio: 1500000, img: null },
-  { num: "N°2",  titulo: "Movimiento II", artista: "Ana María Richter", tecnica: "Acrílico", medidas: "80×80 cm", precio: 1400000, img: null },
-  { num: "N°11", titulo: "No me pidas que te digas adiós", artista: "Graciela Casartelli", tecnica: "Acrílico", medidas: "80×100 cm", precio: 1500000, img: null },
-  { num: "N°31", titulo: "Ensayo final", artista: "Gustavo Herrera", tecnica: "Óleo", medidas: "80×120 cm", precio: 2200000, img: null },
-  { num: "N°35", titulo: "Chica Almodóvar", artista: "Catalina Firpo", tecnica: "Acrílico", medidas: "84×120 cm", precio: 2000000, img: null },
-  { num: "N°42", titulo: "Sin título", artista: "Lucas Figueroa", tecnica: "Óleo", medidas: "100×100 cm", precio: 2500000, img: null },
-  { num: "N°50", titulo: "Limonada", artista: "Jorge Alonso", tecnica: "Óleo", medidas: "80×90 cm", precio: 2100000, img: null },
+  { num: "N°12", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "80×100 cm", img: "/12.png" },
+  { num: "N°73", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "52×72 cm", img: "/73.png" },
+  { num: "N°75", titulo: "Sin título", artista: "–", tecnica: "Óleo", medidas: "100×70 cm", img: "/75.png" },
+  { num: "N°39", titulo: "Entre líneas", artista: "Susana Mercado", tecnica: "Mixta", medidas: "90×110 cm", img: null },
+  { num: "N°18", titulo: "Paisaje I", artista: "Juan Puyssecur", tecnica: "Acrílico", medidas: "99×96 cm", img: "/18.png" },
+  { num: "N°16", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "80×100 cm", img: "/16.png" },
+  { num: "N°44", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "100×100 cm", img: "/44.png" },
+  { num: "N°64", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "105×65 cm", img: "/64.png" },
+  { num: "N°68", titulo: "Sin título", artista: "–", tecnica: "Óleo", medidas: "90×60 cm", img: "/68.png" },
+  { num: "N°90", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "–", img: "/90.png" },
+  { num: "N°20", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "90×120 cm", img: null },
+  { num: "N°1",  titulo: "Joven", artista: "Peter Sussmann", tecnica: "Óleo", medidas: "60×90 cm", img: null },
+  { num: "N°2",  titulo: "Movimiento II", artista: "Ana María Richter", tecnica: "Acrílico", medidas: "80×80 cm", img: null },
+  { num: "N°11", titulo: "No me pidas que te digas adiós", artista: "Graciela Casartelli", tecnica: "Acrílico", medidas: "80×100 cm", img: null },
+  { num: "N°31", titulo: "Ensayo final", artista: "Gustavo Herrera", tecnica: "Óleo", medidas: "80×120 cm", img: null },
+  { num: "N°35", titulo: "Chica Almodóvar", artista: "Catalina Firpo", tecnica: "Acrílico", medidas: "84×120 cm", img: null },
+  { num: "N°42", titulo: "Sin título", artista: "Lucas Figueroa", tecnica: "Óleo", medidas: "100×100 cm", img: null },
+  { num: "N°50", titulo: "Limonada", artista: "Jorge Alonso", tecnica: "Óleo", medidas: "80×90 cm", img: null },
 ];
-
-function formatPrecio(n) {
-  return "$" + n.toLocaleString("es-AR");
-}
 
 function renderCatalogo(lista) {
   const grid = document.getElementById("artworksGrid");
   if (!grid) return;
-
   if (lista.length === 0) {
     grid.innerHTML = `<p class="no-results">No se encontraron obras.</p>`;
     return;
   }
-
   grid.innerHTML = lista.map((o, i) => {
     const imgHtml = o.img
       ? `<div class="artwork-image" style="background-image:url('${o.img}')"></div>`
@@ -42,7 +35,7 @@ function renderCatalogo(lista) {
       ${imgHtml}
       <div class="artwork-info">
         <h3>${o.num} — ${o.titulo}</h3>
-        <p class="artwork-details">${o.artista !== "–" ? o.artista + " · " : ""}${o.tecnica} · ${o.medidas} · ${formatPrecio(o.precio)}</p>
+        <p class="artwork-details">${o.artista !== "–" ? o.artista + " · " : ""}${o.tecnica} · ${o.medidas}</p>
         <button class="btn-view">Ver obra</button>
       </div>
     </div>`;
@@ -54,7 +47,6 @@ let obrasFiltradas = [...obras];
 function filtrar() {
   const busqueda = (document.getElementById("searchInput")?.value || "").toLowerCase();
   const tecnica = document.getElementById("techniqueFilter")?.value || "";
-
   obrasFiltradas = obras.filter(o => {
     const matchBusqueda = !busqueda ||
       o.num.toLowerCase().includes(busqueda) ||
@@ -63,31 +55,18 @@ function filtrar() {
     const matchTecnica = !tecnica || o.tecnica === tecnica;
     return matchBusqueda && matchTecnica;
   });
-
   renderCatalogo(obrasFiltradas);
 }
 
 function openModal(tipo) {
-  const ids = {
-    recommendation: "modalRecommendation",
-    artists: "modalArtists",
-    contact: "modalContact",
-    storage: "modalStorage",
-    artwork: "modalArtwork"
-  };
+  const ids = { recommendation:"modalRecommendation", artists:"modalArtists", contact:"modalContact", storage:"modalStorage", artwork:"modalArtwork" };
   const el = document.getElementById(ids[tipo]);
   if (el) el.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
 function closeModal(tipo) {
-  const ids = {
-    recommendation: "modalRecommendation",
-    artists: "modalArtists",
-    contact: "modalContact",
-    storage: "modalStorage",
-    artwork: "modalArtwork"
-  };
+  const ids = { recommendation:"modalRecommendation", artists:"modalArtists", contact:"modalContact", storage:"modalStorage", artwork:"modalArtwork" };
   const el = document.getElementById(ids[tipo]);
   if (el) el.classList.remove("active");
   document.body.style.overflow = "";
@@ -110,12 +89,10 @@ function openArtworkModal(idx) {
           ${o.artista !== "–" ? `<div class="artwork-detail-row"><strong>Artista</strong><span>${o.artista}</span></div>` : ""}
           <div class="artwork-detail-row"><strong>Técnica</strong><span>${o.tecnica}</span></div>
           <div class="artwork-detail-row"><strong>Medidas</strong><span>${o.medidas}</span></div>
-          <div class="artwork-detail-row"><strong>Precio</strong><span>${formatPrecio(o.precio)}</span></div>
           <a href="https://wa.me/5491167313343?text=Hola%2C+me+interesa+la+${encodeURIComponent(o.num)}+%E2%80%94+${encodeURIComponent(o.titulo)}" 
              target="_blank" class="btn-consult">Consultar por esta obra</a>
         </div>
-      </div>
-    `;
+      </div>`;
   }
   openModal("artwork");
 }
