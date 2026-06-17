@@ -1,14 +1,15 @@
 // ===== CATÁLOGO DE OBRAS =====
 const obras = [
-  { num: "N°12", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "80×100 cm", precio: 1800000, img: null },
-  { num: "N°73", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "52×72 cm", precio: 950000, img: null },
-  { num: "N°75", titulo: "Sin título", artista: "–", tecnica: "Óleo", medidas: "100×70 cm", precio: 2100000, img: null },
+  { num: "N°12", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "80×100 cm", precio: 1800000, img: "/12.png" },
+  { num: "N°73", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "52×72 cm", precio: 950000, img: "/73.png" },
+  { num: "N°75", titulo: "Sin título", artista: "–", tecnica: "Óleo", medidas: "100×70 cm", precio: 2100000, img: "/75.png" },
   { num: "N°39", titulo: "Entre líneas", artista: "Susana Mercado", tecnica: "Mixta", medidas: "90×110 cm", precio: 2000000, img: null },
-  { num: "N°18", titulo: "Paisaje I", artista: "Juan Puyssecur", tecnica: "Acrílico", medidas: "99×96 cm", precio: 1600000, img: null },
-  { num: "N°16", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "80×100 cm", precio: 1400000, img: null },
-  { num: "N°44", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "100×100 cm", precio: 1700000, img: null },
-  { num: "N°64", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "105×65 cm", precio: 1200000, img: null },
-  { num: "N°68", titulo: "Sin título", artista: "–", tecnica: "Óleo", medidas: "90×60 cm", precio: 1500000, img: null },
+  { num: "N°18", titulo: "Paisaje I", artista: "Juan Puyssecur", tecnica: "Acrílico", medidas: "99×96 cm", precio: 1600000, img: "/18.png" },
+  { num: "N°16", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "80×100 cm", precio: 1400000, img: "/16.png" },
+  { num: "N°44", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "100×100 cm", precio: 1700000, img: "/44.png" },
+  { num: "N°64", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "105×65 cm", precio: 1200000, img: "/64.png" },
+  { num: "N°68", titulo: "Sin título", artista: "–", tecnica: "Óleo", medidas: "90×60 cm", precio: 1500000, img: "/68.png" },
+  { num: "N°90", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "–", precio: 1400000, img: "/90.png" },
   { num: "N°20", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "90×120 cm", precio: 1900000, img: null },
   { num: "N°1",  titulo: "Joven", artista: "Peter Sussmann", tecnica: "Óleo", medidas: "60×90 cm", precio: 1500000, img: null },
   { num: "N°2",  titulo: "Movimiento II", artista: "Ana María Richter", tecnica: "Acrílico", medidas: "80×80 cm", precio: 1400000, img: null },
@@ -28,27 +29,21 @@ function renderCatalogo(lista) {
   if (!grid) return;
 
   if (lista.length === 0) {
-    grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:#888;padding:40px">No se encontraron obras.</p>`;
+    grid.innerHTML = `<p class="no-results">No se encontraron obras.</p>`;
     return;
   }
 
   grid.innerHTML = lista.map((o, i) => {
-    const imgSlug = o.num.replace("N°", "n").toLowerCase();
-    const qrUrl = `/obra/${imgSlug}`;
+    const imgHtml = o.img
+      ? `<div class="artwork-image" style="background-image:url('${o.img}')"></div>`
+      : `<div class="artwork-image" style="display:flex;align-items:center;justify-content:center;font-size:48px">🎨</div>`;
     return `
     <div class="artwork-card" onclick="openArtworkModal(${i})">
-      <div class="artwork-img-wrap">
-        <div class="artwork-img-placeholder">🎨</div>
-      </div>
+      ${imgHtml}
       <div class="artwork-info">
-        <div class="artwork-num">${o.num}</div>
-        <div class="artwork-title">${o.titulo}</div>
-        <div class="artwork-artist">${o.artista !== "–" ? o.artista : ""}</div>
-        <div class="artwork-meta">
-          <span class="artwork-tag">${o.tecnica}</span>
-          <span class="artwork-tag">${o.medidas}</span>
-          <span class="artwork-price">${formatPrecio(o.precio)}</span>
-        </div>
+        <h3>${o.num} — ${o.titulo}</h3>
+        <p class="artwork-details">${o.artista !== "–" ? o.artista + " · " : ""}${o.tecnica} · ${o.medidas} · ${formatPrecio(o.precio)}</p>
+        <button class="btn-view">Ver obra</button>
       </div>
     </div>`;
   }).join("");
@@ -72,7 +67,6 @@ function filtrar() {
   renderCatalogo(obrasFiltradas);
 }
 
-// ===== MODALES =====
 function openModal(tipo) {
   const ids = {
     recommendation: "modalRecommendation",
@@ -102,22 +96,25 @@ function closeModal(tipo) {
 function openArtworkModal(idx) {
   const o = obrasFiltradas[idx];
   if (!o) return;
-  const imgSlug = o.num.replace("N°", "n").toLowerCase();
   const detail = document.getElementById("artworkDetail");
   if (detail) {
+    const imgHtml = o.img
+      ? `<div class="artwork-detail-image" style="background-image:url('${o.img}')"></div>`
+      : `<div class="artwork-detail-image" style="display:flex;align-items:center;justify-content:center;font-size:64px">🎨</div>`;
     detail.innerHTML = `
-      <div class="artwork-detail-num">${o.num}</div>
-      <div class="artwork-detail-title">${o.titulo}</div>
-      <div class="artwork-detail-artist">${o.artista !== "–" ? o.artista : "Artista: a confirmar"}</div>
-      <div class="artwork-detail-meta">
-        <span class="artwork-detail-tag">${o.tecnica}</span>
-        <span class="artwork-detail-tag">${o.medidas}</span>
+      <div class="artwork-detail">
+        ${imgHtml}
+        <div class="artwork-detail-info">
+          <div class="artwork-detail-row"><strong>Obra</strong><span>${o.num}</span></div>
+          <div class="artwork-detail-row"><strong>Título</strong><span>${o.titulo}</span></div>
+          ${o.artista !== "–" ? `<div class="artwork-detail-row"><strong>Artista</strong><span>${o.artista}</span></div>` : ""}
+          <div class="artwork-detail-row"><strong>Técnica</strong><span>${o.tecnica}</span></div>
+          <div class="artwork-detail-row"><strong>Medidas</strong><span>${o.medidas}</span></div>
+          <div class="artwork-detail-row"><strong>Precio</strong><span>${formatPrecio(o.precio)}</span></div>
+          <a href="https://wa.me/5491167313343?text=Hola%2C+me+interesa+la+${encodeURIComponent(o.num)}+%E2%80%94+${encodeURIComponent(o.titulo)}" 
+             target="_blank" class="btn-consult">Consultar por esta obra</a>
+        </div>
       </div>
-      <div class="artwork-detail-price">${formatPrecio(o.precio)}</div>
-      <a href="https://wa.me/5491167313343?text=Hola%2C+me+interesa+la+${encodeURIComponent(o.num)}+%E2%80%94+${encodeURIComponent(o.titulo)}" 
-         target="_blank" class="btn-whatsapp" style="display:inline-flex">
-        Consultar por esta obra
-      </a>
     `;
   }
   openModal("artwork");
@@ -128,7 +125,6 @@ function contactPlan(plan) {
   window.open(`https://wa.me/5491167313343?text=${msg}`, "_blank");
 }
 
-// ===== FAQ =====
 function initFaq() {
   document.querySelectorAll(".faq-question").forEach(btn => {
     btn.addEventListener("click", () => {
@@ -140,7 +136,6 @@ function initFaq() {
   });
 }
 
-// ===== CERRAR MODAL AL CLICK FUERA =====
 function initModalClose() {
   document.querySelectorAll(".modal").forEach(modal => {
     modal.addEventListener("click", (e) => {
@@ -152,7 +147,6 @@ function initModalClose() {
   });
 }
 
-// ===== INIT =====
 document.addEventListener("DOMContentLoaded", () => {
   renderCatalogo(obras);
   document.getElementById("searchInput")?.addEventListener("input", filtrar);
