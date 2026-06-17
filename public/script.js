@@ -1,22 +1,19 @@
 const obras = [
-  { num: "N°12", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "80×100 cm", img: "/12.png" },
-  { num: "N°73", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "52×72 cm", img: "/73.png" },
-  { num: "N°75", titulo: "Sin título", artista: "–", tecnica: "Óleo", medidas: "100×70 cm", img: "/75.png" },
-  { num: "N°39", titulo: "Entre líneas", artista: "Susana Mercado", tecnica: "Mixta", medidas: "90×110 cm", img: null },
-  { num: "N°18", titulo: "Paisaje I", artista: "Juan Puyssecur", tecnica: "Acrílico", medidas: "99×96 cm", img: "/18.png" },
-  { num: "N°16", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "80×100 cm", img: "/16.png" },
-  { num: "N°44", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "100×100 cm", img: "/44.png" },
-  { num: "N°64", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "105×65 cm", img: "/64.png" },
-  { num: "N°68", titulo: "Sin título", artista: "–", tecnica: "Óleo", medidas: "90×60 cm", img: "/68.png" },
-  { num: "N°90", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "–", img: "/90.png" },
-  { num: "N°20", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "90×120 cm", img: null },
-  { num: "N°1",  titulo: "Joven", artista: "Peter Sussmann", tecnica: "Óleo", medidas: "60×90 cm", img: null },
-  { num: "N°2",  titulo: "Movimiento II", artista: "Ana María Richter", tecnica: "Acrílico", medidas: "80×80 cm", img: null },
-  { num: "N°11", titulo: "No me pidas que te digas adiós", artista: "Graciela Casartelli", tecnica: "Acrílico", medidas: "80×100 cm", img: null },
-  { num: "N°31", titulo: "Ensayo final", artista: "Gustavo Herrera", tecnica: "Óleo", medidas: "80×120 cm", img: null },
-  { num: "N°35", titulo: "Chica Almodóvar", artista: "Catalina Firpo", tecnica: "Acrílico", medidas: "84×120 cm", img: null },
-  { num: "N°42", titulo: "Sin título", artista: "Lucas Figueroa", tecnica: "Óleo", medidas: "100×100 cm", img: null },
-  { num: "N°50", titulo: "Limonada", artista: "Jorge Alonso", tecnica: "Óleo", medidas: "80×90 cm", img: null },
+  { num: "N°12", titulo: "Sin título", artista: "Silvia Tchobaniam", tecnica: "Mixta", medidas: "80×100 cm", img: "/12.png", hb: true },
+  { num: "N°73", titulo: "Topograph E", artista: "Horacio Pages", tecnica: "Acrílico y áridos", medidas: "52×72 cm", img: "/73.png", hb: true },
+  { num: "N°75", titulo: "Sin título", artista: "–", tecnica: "Óleo", medidas: "100×70 cm", img: "/75.png", hb: true },
+  { num: "N°18", titulo: "Paisaje I", artista: "Juan Puyssecur", tecnica: "Acrílico s/tela", medidas: "99×96 cm", img: "/18.png", hb: true },
+  { num: "N°16", titulo: "Primavera", artista: "Peter Sussmann", tecnica: "Acrílico", medidas: "80×100 cm", img: "/16.png", hb: true },
+  { num: "N°44", titulo: "Sin título", artista: "–", tecnica: "Mixta", medidas: "100×100 cm", img: "/44.png", hb: true },
+  { num: "N°64", titulo: "Medusas", artista: "Maríu Álvarez", tecnica: "Acrílico", medidas: "105×65 cm", img: "/64.png", hb: true },
+  { num: "N°68", titulo: "Sin título", artista: "–", tecnica: "Óleo", medidas: "90×60 cm", img: "/68.png", hb: true },
+  { num: "N°90", titulo: "La ciudad de Embore", artista: "Carmen Bruno", tecnica: "Acrílico", medidas: "80×60 cm", img: "/90.png", hb: false },
+  { num: "N°31", titulo: "Ensayo final", artista: "Gustavo Herrera", tecnica: "Óleo", medidas: "80×120 cm", img: "https://i.imgur.com/U6eg7Ja.jpeg", hb: false },
+  { num: "N°50", titulo: "Limonada", artista: "Jorge Alonso", tecnica: "Óleo", medidas: "80×90 cm", img: "https://i.imgur.com/l4SWSIk.jpeg", hb: false },
+  { num: "N°63", titulo: "Sin título", artista: "–", tecnica: "Óleo", medidas: "90×80 cm", img: "https://i.imgur.com/HgCUiuN.jpeg", hb: false },
+  { num: "N°36", titulo: "Sin título", artista: "–", tecnica: "Acrílico", medidas: "80×100 cm", img: "https://i.imgur.com/CyrbsPe.jpeg", hb: false },
+  { num: "N°29", titulo: "Sin título", artista: "Ghala", tecnica: "Acrílico", medidas: "90×80 cm", img: "https://i.imgur.com/GIOK6SE.jpeg", hb: false },
+  { num: "N°25", titulo: "El pájaro canta hasta morir", artista: "Nélida Damato", tecnica: "Acrílico", medidas: "80×100 cm", img: "https://i.imgur.com/nfAppsl.jpeg", hb: false },
 ];
 
 function renderCatalogo(lista) {
@@ -30,10 +27,12 @@ function renderCatalogo(lista) {
     const imgHtml = o.img
       ? `<div class="artwork-image" style="background-image:url('${o.img}')"></div>`
       : `<div class="artwork-image" style="display:flex;align-items:center;justify-content:center;font-size:48px">🎨</div>`;
+    const hbBadge = o.hb ? `<div style="font-size:0.78rem;color:#ffd700;margin-bottom:6px;font-weight:600;">🏥 En exhibición · Hospital Británico</div>` : "";
     return `
     <div class="artwork-card" onclick="openArtworkModal(${i})">
       ${imgHtml}
       <div class="artwork-info">
+        ${hbBadge}
         <h3>${o.num} — ${o.titulo}</h3>
         <p class="artwork-details">${o.artista !== "–" ? o.artista + " · " : ""}${o.tecnica} · ${o.medidas}</p>
         <button class="btn-view">Ver obra</button>
@@ -80,16 +79,18 @@ function openArtworkModal(idx) {
     const imgHtml = o.img
       ? `<div class="artwork-detail-image" style="background-image:url('${o.img}')"></div>`
       : `<div class="artwork-detail-image" style="display:flex;align-items:center;justify-content:center;font-size:64px">🎨</div>`;
+    const hbBadge = o.hb ? `<div style="font-size:0.85rem;color:#ffd700;font-weight:600;margin-bottom:12px;">🏥 En exhibición · Hospital Británico</div>` : "";
     detail.innerHTML = `
       <div class="artwork-detail">
         ${imgHtml}
         <div class="artwork-detail-info">
+          ${hbBadge}
           <div class="artwork-detail-row"><strong>Obra</strong><span>${o.num}</span></div>
           <div class="artwork-detail-row"><strong>Título</strong><span>${o.titulo}</span></div>
           ${o.artista !== "–" ? `<div class="artwork-detail-row"><strong>Artista</strong><span>${o.artista}</span></div>` : ""}
           <div class="artwork-detail-row"><strong>Técnica</strong><span>${o.tecnica}</span></div>
           <div class="artwork-detail-row"><strong>Medidas</strong><span>${o.medidas}</span></div>
-          <a href="https://wa.me/5491167313343?text=Hola%2C+me+interesa+la+${encodeURIComponent(o.num)}+%E2%80%94+${encodeURIComponent(o.titulo)}" 
+          <a href="https://wa.me/5491167313343?text=Hola%2C+me+interesa+la+${encodeURIComponent(o.num)}+%E2%80%94+${encodeURIComponent(o.titulo)}"
              target="_blank" class="btn-consult">Consultar por esta obra</a>
         </div>
       </div>`;
