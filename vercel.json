@@ -1,18 +1,25 @@
 {
   "rewrites": [
-    {"source": "/estilos.css", "destination": "/público/estilos.css"},
-    {"source": "/script.js", "destination": "/público/script.js"},
-    {"source": "/obra/n12", "destination": "/público/obra/n12/índice.html"},
-    {"source": "/obra/n73", "destination": "/público/obra/n73/índice.html"},
-    {"source": "/obra/n75", "destination": "/público/obra/n75/índice.html"},
-    {"source": "/obra/n39", "destination": "/público/obra/n39/índice.html"},
-    {"source": "/obra/n18", "destination": "/público/obra/n18/índice.html"},
-    {"source": "/obra/n16", "destination": "/público/obra/n16/índice.html"},
-    {"source": "/obra/n44", "destination": "/público/obra/n44/índice.html"},
-    {"source": "/obra/n64", "destination": "/público/obra/n64/índice.html"},
-    {"source": "/obra/n68", "destination": "/público/obra/n68/índice.html"},
-    {"source": "/:file.png", "destination": "/:file.png"},
-    {"source": "/(.*)", "destination": "/público/índice.html"}
+    {"source": "/estilos.css", "destination": "/public/estilos.css"},
+    {"source": "/script.js", "destination": "/public/script.js"},
+    {"source": "/12.png", "destination": "/public/12.png"},
+    {"source": "/16.png", "destination": "/public/16.png"},
+    {"source": "/18.png", "destination": "/public/18.png"},
+    {"source": "/44.png", "destination": "/public/44.png"},
+    {"source": "/64.png", "destination": "/public/64.png"},
+    {"source": "/68.png", "destination": "/public/68.png"},
+    {"source": "/73.png", "destination": "/public/73.png"},
+    {"source": "/75.png", "destination": "/public/75.png"},
+    {"source": "/90.png", "destination": "/public/90.png"},
+    {"source": "/obra/n12", "destination": "/public/obra/n12/index.html"},
+    {"source": "/obra/n73", "destination": "/public/obra/n73/index.html"},
+    {"source": "/obra/n75", "destination": "/public/obra/n75/index.html"},
+    {"source": "/obra/n39", "destination": "/public/obra/n39/index.html"},
+    {"source": "/obra/n18", "destination": "/public/obra/n18/index.html"},
+    {"source": "/obra/n16", "destination": "/public/obra/n16/index.html"},
+    {"source": "/obra/n44", "destination": "/public/obra/n44/index.html"},
+    {"source": "/obra/n64", "destination": "/public/obra/n64/index.html"},
+    {"source": "/obra/n68", "destination": "/public/obra/n68/index.html"},
+    {"source": "/(.*)", "destination": "/public/index.html"}
   ]
 }
-
