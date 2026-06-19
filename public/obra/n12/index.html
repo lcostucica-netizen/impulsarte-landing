@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,7 +7,7 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: #f5f4f0;
+      background: #f0ede8;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       display: flex;
       justify-content: center;
@@ -21,216 +20,159 @@
       background: #ffffff;
       border-radius: 24px;
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.08);
+      border: 0.5px solid rgba(0,0,0,0.08);
     }
     .img-wrapper { position: relative; }
-    .obra-img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-    }
+    .obra-img { width: 100%; height: 220px; object-fit: cover; display: block; }
     .badge-hospital {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.4);
-      border-radius: 20px;
-      padding: 3px 10px;
-      font-size: 11px;
-      color: rgba(255,255,255,0.95);
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 20px; padding: 3px 10px; font-size: 11px; color: rgba(255,255,255,0.95);
       backdrop-filter: blur(4px);
     }
     .obra-label {
-      position: absolute;
-      bottom: 12px;
-      left: 16px;
-      font-size: 11px;
-      color: rgba(255,255,255,0.88);
-      letter-spacing: 0.04em;
-      font-weight: 500;
+      position: absolute; bottom: 12px; left: 16px;
+      font-size: 11px; color: rgba(255,255,255,0.88); letter-spacing: 0.04em; font-weight: 500;
     }
-    .content { padding: 20px 20px 8px; }
-    .pregunta {
-      font-size: 15px;
-      font-weight: 500;
-      color: #1a1a1a;
-      line-height: 1.45;
-      margin-bottom: 18px;
-    }
+    .content { padding: 20px; }
+    .pregunta { font-size: 15px; font-weight: 500; color: #1a1a1a; line-height: 1.45; margin-bottom: 16px; }
     .btn-audio {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 11px 16px;
-      border-radius: 10px;
-      background: #f5f4f0;
-      border: 1px solid rgba(0,0,0,0.1);
-      cursor: pointer;
-      margin-bottom: 18px;
-      text-align: left;
+      background: #1a1a1a; border-radius: 14px; padding: 14px 16px;
+      display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+      cursor: pointer; border: none; width: 100%; text-align: left;
     }
-    .btn-audio:active { opacity: 0.75; }
-    .btn-audio .icon {
-      font-size: 18px;
-      color: #666;
-      flex-shrink: 0;
-      width: 20px;
-      text-align: center;
+    .btn-audio:active { opacity: 0.85; }
+    .play-circle {
+      width: 40px; height: 40px; border-radius: 50%; background: #E8532A;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-    .btn-audio .label {
-      font-size: 14px;
-      color: #1a1a1a;
-      font-weight: 500;
-      flex: 1;
-    }
-    .btn-audio .duracion {
-      font-size: 12px;
-      color: #999;
-    }
-    .descripcion {
-      font-size: 14px;
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    .divider {
-      border: none;
-      border-top: 1px solid rgba(0,0,0,0.07);
-      margin-bottom: 16px;
-    }
-    .ficha {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-    .ficha-item {
-      background: #f5f4f0;
-      border-radius: 10px;
-      padding: 10px 12px;
-    }
-    .ficha-item .key {
-      font-size: 11px;
-      color: #999;
-      margin-bottom: 2px;
-    }
-    .ficha-item .val {
-      font-size: 13px;
-      color: #1a1a1a;
-      font-weight: 500;
-    }
-    .btn-conocer {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 13px 16px;
-      border-radius: 10px;
-      background: #f5f4f0;
-      border: 1px solid rgba(0,0,0,0.1);
-      cursor: pointer;
-      text-decoration: none;
-      margin-bottom: 16px;
-      color: #1a1a1a;
-      font-size: 14px;
-      font-weight: 500;
-      font-family: inherit;
-    }
-    .btn-conocer:active { opacity: 0.75; }
-    .institucional {
-      font-size: 11px;
-      color: #bbb;
-      text-align: center;
-      padding-bottom: 16px;
+    .audio-text { flex: 1; }
+    .audio-label { font-size: 13px; font-weight: 600; color: white; line-height: 1.3; display: block; }
+    .audio-sub { font-size: 11px; color: rgba(255,255,255,0.5); display: block; margin-top: 2px; }
+    .audio-arrow {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .audio-progress {
-      display: none;
-      align-items: center;
-      gap: 10px;
-      padding: 0 0 16px;
+      display: none; align-items: center; gap: 10px; padding: 0 0 14px;
     }
     .audio-progress.visible { display: flex; }
     .progress-bar-wrap {
-      flex: 1;
-      height: 3px;
-      background: rgba(0,0,0,0.1);
-      border-radius: 2px;
-      overflow: hidden;
-      cursor: pointer;
+      flex: 1; height: 3px; background: rgba(0,0,0,0.1);
+      border-radius: 2px; overflow: hidden; cursor: pointer;
     }
-    .progress-bar-fill {
-      height: 100%;
-      background: #1a1a1a;
-      width: 0%;
-      transition: width 0.3s linear;
+    .progress-bar-fill { height: 100%; background: #E8532A; width: 0%; transition: width 0.3s linear; }
+    .progress-time { font-size: 11px; color: #999; min-width: 32px; text-align: right; }
+    .descripcion { font-size: 14px; color: #666; line-height: 1.6; margin-bottom: 20px; }
+    .ficha {
+      border-radius: 14px; border: 1.5px solid #e8e4de;
+      overflow: hidden; margin-bottom: 16px;
+      display: grid; grid-template-columns: 1fr 1fr;
     }
-    .progress-time {
-      font-size: 11px;
-      color: #999;
-      min-width: 32px;
-      text-align: right;
+    .ficha-item { padding: 12px 14px; }
+    .ficha-item:nth-child(1),
+    .ficha-item:nth-child(2) { border-bottom: 1px solid #e8e4de; }
+    .ficha-item:nth-child(1),
+    .ficha-item:nth-child(3) { border-right: 1px solid #e8e4de; }
+    .ficha-key { font-size: 10px; color: #aaa; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+    .ficha-val { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+    .btn-conocer {
+      width: 100%; display: flex; align-items: center; justify-content: center;
+      gap: 8px; padding: 13px 16px; border-radius: 12px;
+      background: #f5f4f0; border: 1.5px solid #e0ddd8;
+      cursor: pointer; text-decoration: none; margin-bottom: 20px;
+      color: #1a1a1a; font-size: 14px; font-weight: 500; font-family: inherit;
     }
+    .btn-conocer:active { opacity: 0.75; }
+    .footer { border-top: 1px solid rgba(0,0,0,0.07); padding-top: 20px; }
+    .footer-label { font-size: 11px; color: #aaa; text-align: center; margin-bottom: 16px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .logos { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px; }
+    .logos img { height: 110px; object-fit: contain; }
+    .logos-sep { color: #ddd; font-size: 18px; }
+    .footer-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+    .btn-ig {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      padding: 12px 8px; border-radius: 12px;
+      background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+      text-decoration: none;
+    }
+    .btn-web {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      padding: 12px 8px; border-radius: 12px; background: #1a1a1a; text-decoration: none;
+    }
+    .btn-label { font-size: 11px; font-weight: 600; color: white; }
+    .btn-sub { font-size: 10px; color: rgba(255,255,255,0.65); }
+    .tagline { font-size: 11px; color: #ccc; text-align: center; margin: 0 0 4px; font-style: italic; }
   </style>
 </head>
 <body>
 <div class="card">
   <div class="img-wrapper">
-    <img class="obra-img" src="../../12.png" alt="N°12 — Cartografía interior" />
+    <img class="obra-img" src="../../12.png" alt="Cartografía interior — N°12" />
     <span class="badge-hospital">Hospital Británico</span>
     <span class="obra-label">N°12 — Cartografía interior</span>
   </div>
   <div class="content">
     <p class="pregunta">¿Qué tiene en común un circuito, un mapa y una decisión estratégica?</p>
+
     <button class="btn-audio" id="btn-audio" onclick="toggleAudio()">
-      <span class="icon" id="audio-icon">▶</span>
-      <span class="label" id="audio-label">Escuchar la historia de esta obra</span>
-      <span class="duracion" id="audio-dur">1:30</span>
+      <div class="play-circle">
+        <svg id="icon-audio" width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+      </div>
+      <div class="audio-text">
+        <span class="audio-label" id="audio-label">Escuchar la historia de esta obra</span>
+        <span class="audio-sub" id="audio-sub">Audio · 1:30 min</span>
+      </div>
+      <div class="audio-arrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+      </div>
     </button>
+
     <div class="audio-progress" id="audio-progress">
       <div class="progress-bar-wrap" onclick="seekAudio(event)">
         <div class="progress-bar-fill" id="progress-fill"></div>
       </div>
       <span class="progress-time" id="progress-time">0:00</span>
     </div>
+
     <audio id="audio-el" src="../../12.mp4" preload="none"></audio>
+
     <p class="descripcion">Superficie cálida con venas finas en azul y violeta. Una obra que transmite estructura, precisión y solidez sin decirlo con palabras.</p>
-    <hr class="divider" />
+
     <div class="ficha">
-      <div class="ficha-item"><p class="key">Técnica</p><p class="val">Técnica mixta</p></div>
-      <div class="ficha-item"><p class="key">Medidas</p><p class="val">80 × 100 cm</p></div>
-      <div class="ficha-item"><p class="key">Artista</p><p class="val">—</p></div>
-      <div class="ficha-item"><p class="key">Espacio</p><p class="val">Sala de Reuniones</p></div>
+      <div class="ficha-item"><p class="ficha-key">Técnica</p><p class="ficha-val">Técnica mixta</p></div>
+      <div class="ficha-item"><p class="ficha-key">Medidas</p><p class="ficha-val">80 × 100 cm</p></div>
+      <div class="ficha-item"><p class="ficha-key">Artista</p><p class="ficha-val">—</p></div>
+      <div class="ficha-item"><p class="ficha-key">Espacio</p><p class="ficha-val">Sala de Reuniones</p></div>
     </div>
-    <hr class="divider" />
+
     <a class="btn-conocer" href="https://wa.me/5491167313343?text=Hola%2C%20quer%C3%ADa%20conocer%20m%C3%A1s%20sobre%20la%20obra%20N%C2%B012%20del%20Hospital%20Brit%C3%A1nico" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.843L.057 23.714a.75.75 0 00.918.918l5.87-1.453A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.71 9.71 0 01-4.952-1.355l-.355-.21-3.684.913.929-3.585-.23-.37A9.712 9.712 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.843L.057 23.714a.75.75 0 00.918.918l5.87-1.453A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.71 9.71 0 01-4.952-1.355l-.355-.21-3.684.913.929-3.585-.23-.37A9.712 9.712 0 012.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
       Conocer más sobre esta obra
     </a>
 
-    <hr style="border:none; border-top:1px solid rgba(0,0,0,0.07); margin:0 0 20px;">
-    <p style="font-size:11px; color:#aaa; text-align:center; margin:0 0 16px; letter-spacing:0.05em; text-transform:uppercase;">Esta muestra es una iniciativa de</p>
-    <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:20px;">
-      <img src="../../Logo Impulsarte AI en colores vibrantes.png" alt="Impulsarte AI" style="height:110px; object-fit:contain;">
-      <span style="color:#ddd; font-size:18px;">x</span>
-      <img src="../../Logo hospital britanico.jpg" alt="Hospital Britanico" style="height:110px; object-fit:contain;">
+    <div class="footer">
+      <p class="footer-label">Esta muestra es una iniciativa de</p>
+      <div class="logos">
+        <img src="../../Logo Impulsarte AI en colores vibrantes.png" alt="Impulsarte AI" />
+        <span class="logos-sep">×</span>
+        <img src="../../Logo hospital britanico.jpg" alt="Hospital Británico" />
+      </div>
+      <div class="footer-btns">
+        <a href="https://instagram.com/impulsarteme" target="_blank" class="btn-ig">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
+          <span class="btn-label">@impulsarteme</span>
+          <span class="btn-sub">Instagram</span>
+        </a>
+        <a href="https://impulsarteai.com" target="_blank" class="btn-web">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span class="btn-label">impulsarteai.com</span>
+          <span class="btn-sub">Sitio web</span>
+        </a>
+      </div>
+      <p class="tagline">Arte para espacios que importan</p>
     </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:16px;">
-      <a href="https://instagram.com/impulsarteme" target="_blank" style="display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 8px; border-radius:12px; background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); text-decoration:none;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
-        <span style="font-size:11px; font-weight:600; color:white;">@impulsarteme</span>
-        <span style="font-size:10px; color:rgba(255,255,255,0.75);">Instagram</span>
-      </a>
-      <a href="https://impulsarteai.com" target="_blank" style="display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 8px; border-radius:12px; background:#1a1a1a; text-decoration:none;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        <span style="font-size:11px; font-weight:600; color:white;">impulsarteai.com</span>
-        <span style="font-size:10px; color:rgba(255,255,255,0.6);">Sitio web</span>
-      </a>
-    </div>
-    <p style="font-size:11px; color:#bbb; text-align:center; margin:0 0 20px; font-style:italic;">Arte para espacios que importan</p>
   </div>
 </div>
 <script>
@@ -240,15 +182,16 @@
     if (!playing) {
       audio.play();
       playing = true;
-      document.getElementById('audio-icon').textContent = '⏸';
+      document.getElementById('icon-audio').innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1" fill="white"/><rect x="14" y="4" width="4" height="16" rx="1" fill="white"/>';
       document.getElementById('audio-label').textContent = 'Reproduciendo...';
-      document.getElementById('audio-dur').textContent = '';
+      document.getElementById('audio-sub').textContent = '';
       document.getElementById('audio-progress').classList.add('visible');
     } else {
       audio.pause();
       playing = false;
-      document.getElementById('audio-icon').textContent = '▶';
+      document.getElementById('icon-audio').innerHTML = '<polygon points="5,3 19,12 5,21" fill="white"/>';
       document.getElementById('audio-label').textContent = 'Escuchar la historia de esta obra';
+      document.getElementById('audio-sub').textContent = 'Audio · 1:30 min';
     }
   }
   audio.addEventListener('timeupdate', function() {
@@ -260,8 +203,9 @@
   });
   audio.addEventListener('ended', function() {
     playing = false;
-    document.getElementById('audio-icon').textContent = '▶';
+    document.getElementById('icon-audio').innerHTML = '<polygon points="5,3 19,12 5,21" fill="white"/>';
     document.getElementById('audio-label').textContent = 'Escuchar la historia de esta obra';
+    document.getElementById('audio-sub').textContent = 'Audio · 1:30 min';
     document.getElementById('progress-fill').style.width = '0%';
     document.getElementById('progress-time').textContent = '0:00';
   });
